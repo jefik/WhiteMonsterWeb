@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Test</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="/css/product.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+  </head>
+  <body>
+    <%- include("partials/header") %>
+    <div id="loader">
+      <img src="/images/monsterlogo.svg" alt="Monster Logo" />
+    </div>
+    <div class="main" id="Start">
+      <div class="banner">
+        <div class="row">
+          <div class="col-12 butt">
+            <button>
+              <a href="/">
+                <i class="fas fa-arrow-left"></i>
+                Go back
+              </a>
+            </button>
+          </div>
+          <div class="col-lg-8 col-md-8 col-12 banner-left">
+            <div class="inside">
+              <p><%= product.full_description %></p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12 banner-right">
+            <img src="/<%= product.url %>" class="card-img-top" alt="<%= product.alt_text %>" />
+          </div>
+          <div class="col-12 stats">
+            <div class="ingredients">
+              <h2>Ingredients</h2>
+              <p><%= product.ingredients %></p>
+            </div>
+
+            <div class="nutrition">
+              <h2>Nutrition Facts per can</h2>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <td>Energy</td>
+                    <td><%= product.energy %></td>
+                  </tr>
+                  <tr>
+                    <td>Fat</td>
+                    <td><%= product.fat %></td>
+                  </tr>
+                  <tr>
+                    <td>Saturated Fatty Acids</td>
+                    <td><%= product.saturated_fat %></td>
+                  </tr>
+                  <tr>
+                    <td>Carbohydrates</td>
+                    <td><%= product.carbohydrates %></td>
+                  </tr>
+                  <tr>
+                    <td>Of which sugars</td>
+                    <td><%= product.sugar %></td>
+                  </tr>
+                  <tr>
+                    <td>Protein</td>
+                    <td><%= product.protein %></td>
+                  </tr>
+                  <tr>
+                    <td>Salt</td>
+                    <td><%= product.salt %></td>
+                  </tr>
+                  <tr>
+                    <td>Caffeine</td>
+                    <td><%= product.caffeine %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="monster-swiper swiper">
+            <h1>Monsters</h1>
+
+            <div class="swiper-wrapper">
+              <% products .filter(p => p.id !== product.id).forEach((p) => { %>
+              <div class="swiper-slide">
+                <a href="/product/<%= p.id %>">
+                  <img src="/<%= p.url %>" alt="<%= p.alt_text %>" />
+                </a>
+              </div>
+              <% }) %>
+            </div>
+
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include("partials/footer") %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="/js/javascript.js"></script>
+    <script src="/js/product.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  </body>
+</html>

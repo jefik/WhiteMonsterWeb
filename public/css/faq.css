@@ -1,0 +1,121 @@
+.main {
+  .banner {
+    position: relative;
+    min-height: 100vh;
+    background: url("/images/faqbackground.jpg") no-repeat center center / cover;
+    margin-top: -135px;
+    background-attachment: fixed;
+    padding: 80px 180px 100px 180px;
+
+    .row {
+      padding: 50px;
+      margin: 180px 0px 0px 0px;
+      background-color: var(--main-bg-color);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+  }
+  .list-group-item.active {
+    background-color: var(--second-bg-color);
+    border: none;
+    img {
+      filter: invert(1) brightness(2);
+    }
+  }
+
+  .list-group {
+    img {
+      width: 30px;
+      height: 30px;
+    }
+    a {
+      &:hover {
+        color: white;
+        background-color: var(--second-bg-color);
+        img {
+          filter: invert(1) brightness(2);
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    font-family: "Bank Gothic Light", sans-serif !important;
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: var(--second-bg-color);
+    color: white;
+  }
+  .accordion-body {
+    font-family: "Bank Gothic Light", sans-serif;
+    font-weight: 500;
+    p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .accordion-button:not(.collapsed)::after {
+    filter: brightness(0) invert(1);
+  }
+  .accordion-button:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1480px) {
+  .main {
+    & .banner {
+      & .banner-right {
+        img {
+          transform: scale(1.2);
+          width: 185px;
+          background: none;
+          position: relative;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1400px) {
+  .main {
+    .banner {
+      min-height: 100vh !important;
+      padding: 30px 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .main {
+    .banner {
+      height: auto;
+      padding: 30px 15px;
+      min-height: auto !important;
+
+      .row {
+        text-align: center;
+      }
+      .container {
+        margin-bottom: 35px;
+        max-width: 900px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main {
+    .banner {
+      .row {
+        padding: 0;
+        padding-bottom: calc(var(--bs-gutter-x) * 0.5);
+      }
+    }
+  }
+}

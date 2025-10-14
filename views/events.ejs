@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Test</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/css/events.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+  </head>
+  <body>
+    <%- include("partials/header") %>
+    <div id="loader">
+      <img src="/images/monsterlogo.svg" alt="Monster Logo" />
+    </div>
+    <div class="main" id="Start">
+      <div class="inner">
+        <div class="container">
+          <div class="row">
+            <h1><%= selectedTag === "All" ? "All Events" : selectedTag %></h1>
+          </div>
+          <div class="newest">
+            <% if (newestEvent) { %>
+            <div class="newest-hero">
+              <img src="<%= newestEvent.url %>" alt="<%= newestEvent.alt_text %>" class="newest-img" />
+              <div class="corner">
+                <h2><%= newestEvent.title %></h2>
+
+                <button class="butt" data-href="/event/<%= newestEvent.id %>">Learn More</button>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <div class="filters-wrapper">
+        <div class="filters">
+          <button data-tag="All" class="<%= !selectedTag || selectedTag === 'All' ? 'active' : '' %>">
+            <span>All</span>
+          </button>
+
+          <% tags.forEach(tag => { %>
+          <button data-tag="<%= tag %>" class="<%= selectedTag === tag ? 'active' : '' %>">
+            <span><%= tag %></span>
+          </button>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="inner inner2">
+        <div class="container">
+          <div class="rect">
+            <% events.forEach((event, index) => { %>
+            <a href="/event/<%= event.id %>" class="event-item" style="display: <%= index < 3 ? 'block' : 'none' %>;">
+              <div class="row head">
+                <div class="col-12 col-lg-6 imgNews"><img src="<%= event.url %>" alt="<%= event.alt_text %>" /></div>
+                <div class="col-12 col-lg-6 content">
+                  <p class="tags"><%= event.tags %></p>
+                  <h3 class="title"><%= event.title %></h3>
+                  <p class="text"><%= event.content %></p>
+                  <p class="date"><%= event.date.toISOString().slice(0, 10) %></p>
+                </div>
+              </div>
+            </a>
+            <% }) %>
+          </div>
+          <% if (events.length > 3) { %>
+          <div class="butt">
+            <button id="load-more" data-tag="<%= selectedTag %>">Load more</button>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <%- include("partials/footer") %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="/js/javascript.js"></script>
+    <script src="/js/events.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.5/dist/index.bundle.min.js"></script>
+  </body>
+</html>
