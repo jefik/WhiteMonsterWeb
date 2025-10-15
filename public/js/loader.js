@@ -2,7 +2,7 @@
   const loader = document.getElementById("loader");
   if (!loader) return;
 
-  // Loader se spustí jen při skutečné návštěvě stránky (reload)
+  // Loader logic for visiting page
   window.addEventListener("load", () => {
     if (loader.style.display === "none") return;
 

@@ -1,3 +1,7 @@
+.hidden {
+  display: none !important;
+}
+
 .main {
   .banner {
     position: absolute;
@@ -81,23 +85,7 @@
         height: 650px;
         object-fit: cover;
       }
-      /* .corner {
-        h2 {
-          position: absolute;
-          left: 20px;
-          bottom: 85px;
 
-          color: white;
-        }
-        button {
-          border: none;
-          background-color: var(--main-bg-color);
-          position: absolute;
-          left: 20px;
-          bottom: 20px;
-          padding: 12px 25px;
-        }
-      } */
       .corner {
         position: absolute;
         bottom: 30px;
@@ -136,7 +124,6 @@
     }
 
     .container {
-      /*  padding-bottom: 100px; */
       position: relative;
       z-index: 101;
 
@@ -236,7 +223,6 @@
 
   .inner2 {
     background: url("/images/eventsbanner2color.jpg") no-repeat center center / cover;
-
     background-color: black;
     padding: 0;
     margin: 0;

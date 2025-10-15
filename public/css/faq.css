@@ -67,26 +67,18 @@
 }
 
 /* MEDIA QUERIES */
-@media screen and (max-width: 1480px) {
-  .main {
-    & .banner {
-      & .banner-right {
-        img {
-          transform: scale(1.2);
-          width: 185px;
-          background: none;
-          position: relative;
-          top: 0;
-        }
-      }
-    }
-  }
-}
+
 @media screen and (max-width: 1400px) {
   .main {
     .banner {
-      min-height: 100vh !important;
+      height: auto;
       padding: 30px 15px;
+      min-height: auto !important;
+
+      .container {
+        margin-bottom: 35px;
+        max-width: 1200px;
+      }
     }
   }
 }
@@ -113,8 +105,12 @@
   .main {
     .banner {
       .row {
+        margin: 130px 0 0 0;
         padding: 0;
         padding-bottom: calc(var(--bs-gutter-x) * 0.5);
+      }
+      .container {
+        margin-bottom: 0;
       }
     }
   }

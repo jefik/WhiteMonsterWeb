@@ -54,7 +54,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
+      color: white;
       z-index: 9999;
       pointer-events: auto;
     }
@@ -137,12 +137,11 @@
     h2 {
       margin-bottom: 10px;
     }
-    p {
-    }
   }
 }
 
 /* MEDIA QUERIES */
+
 @media screen and (max-width: 1480px) {
   .main {
     & .banner {
@@ -175,6 +174,11 @@
 @media screen and (max-width: 992px) {
   .main {
     .banner {
+      height: auto;
+      .row {
+        padding-top: 25px;
+        text-align: center;
+      }
       .butt {
         display: flex;
         justify-content: center;
@@ -184,20 +188,6 @@
           margin: 20px 0 0 0;
         }
       }
-    }
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .main {
-    .banner {
-      height: auto;
-
-      .row {
-        padding-top: 25px;
-        text-align: center;
-      }
-
       .banner-right {
         margin-bottom: 20px;
         margin-top: 20px;
@@ -211,7 +201,6 @@
         }
       }
     }
-
     .monster-swiper {
       width: 100%;
       padding: 60px 0;
@@ -261,39 +250,34 @@
 @media screen and (max-width: 576px) {
   .main {
     .banner {
+      padding: 35px 20px;
+
       .banner-left {
         .inside {
-          padding: 25px;
+          padding: 10px;
         }
       }
+
       .banner-right {
         margin: 20px 0;
+
         img {
-          width: 95px;
+          width: 110px;
         }
       }
+
       .row {
         padding: 0;
       }
     }
+
     .monster-swiper {
       padding-top: 0;
     }
+
     .stats {
       padding: 25px;
       margin-top: 0;
     }
-  }
-
-  .main .banner {
-    padding: 35px 20px;
-  }
-
-  .main .banner-left .inside {
-    padding: 10px;
-  }
-
-  .main .banner-right img {
-    width: 110px;
   }
 }

@@ -1,3 +1,12 @@
+/* Lightbox fix */
+.lightbox-carousel {
+  button {
+    &:hover {
+      background-color: unset;
+    }
+  }
+}
+
 .main {
   .container {
     margin-top: 50px;
@@ -24,7 +33,7 @@
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
       background-size: 40px 40px;
-      filter: invert(1); /* černá barva */
+      filter: invert(1);
     }
     .carousel-control-prev,
     .carousel-control-next {

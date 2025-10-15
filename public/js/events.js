@@ -1,3 +1,5 @@
+// GSAP Animations
+
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("load", () => {
@@ -56,46 +58,64 @@ gsap.from("#load-more", {
   ease: "power2.out",
 });
 
-const items = document.querySelectorAll(".event-item");
-const btn = document.getElementById("load-more");
-let visibleCount = 3;
-const increment = 3;
+// Tags filtering / load more button handling
 
-btn.addEventListener("click", () => {
-  const next = visibleCount + increment;
-  for (let i = visibleCount; i < next && i < items.length; i++) {
-    items[i].style.display = "block";
-  }
-  visibleCount += increment;
-
-  if (visibleCount >= items.length) {
-    btn.style.display = "none";
-  }
-});
 document.addEventListener("DOMContentLoaded", () => {
+  const items = Array.from(document.querySelectorAll(".event-item")); // ALL event elements
+  const btn = document.getElementById("load-more");
   const filterButtons = document.querySelectorAll(".filters button");
-  const allItems = Array.from(document.querySelectorAll(".event-item"));
+  const increment = 3;
 
+  let currentTag = "All";
+  let visibleCount = increment;
+
+  function showItems(tag) {
+    currentTag = tag;
+
+    // Get items matching the selected tag
+    const relevantItems = items.filter((item) => {
+      const tags = item.dataset.tags.split(",").map((t) => t.trim()); // Split into array
+      return tag === "All" || tags.includes(tag);
+    });
+
+    // Show only visibleCount items, rest hidden
+    relevantItems.forEach((item, index) => {
+      item.style.display = index < visibleCount ? "" : "none";
+    });
+
+    // Hide items not matching the selected tag
+    items.filter((i) => !relevantItems.includes(i)).forEach((i) => (i.style.display = "none"));
+
+    // Show or Hide the load more button
+    if (relevantItems.length > visibleCount) {
+      btn.classList.remove("hidden");
+    } else {
+      btn.classList.add("hidden");
+    }
+  }
+
+  // Handle filter button clicks
   filterButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const tag = button.dataset.tag;
+      const tag = button.dataset.tag || "All"; // Getting tag from button
 
+      // Update of active class
       filterButtons.forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
 
-      allItems.forEach((item) => {
-        const itemTags = item
-          .querySelector(".tags")
-          .textContent.split(",")
-          .map((t) => t.trim());
-        if (tag === "All" || itemTags.includes(tag)) {
-          item.style.display = "block";
-        } else {
-          item.style.display = "none";
-        }
-      });
+      // Reset visible count for new tag
+      visibleCount = increment;
+      showItems(tag);
     });
   });
+
+  // Handling load more button click
+  btn.addEventListener("click", () => {
+    visibleCount += increment;
+    showItems(currentTag); // Rerender items
+  });
+
+  showItems("All");
 });

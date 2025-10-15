@@ -285,9 +285,9 @@ app.get("/faq", async (req, res) => {
     res.status(500).send("Error while loading FAQ page");
   }
 });
-// ----------------------------
-// Start the server
-// ----------------------------
+
+// ----------------- Start the server -----------------¨
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

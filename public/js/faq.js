@@ -1,3 +1,5 @@
+// GSAP Animations
+
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("load", () => {
