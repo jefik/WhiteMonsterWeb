@@ -71,3 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 });
+
+//FIX BUTTON LINKS
+document.querySelectorAll(".butt[data-href]").forEach((button) => {
+  button.addEventListener("click", () => {
+    window.location.href = button.getAttribute("data-href");
+  });
+});
