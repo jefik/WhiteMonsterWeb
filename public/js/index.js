@@ -1,11 +1,10 @@
 // GSAP Animations
-
 gsap.registerPlugin(ScrollTrigger);
 
 window.addEventListener("load", () => {
-  const tl = gsap.timeline({ defaults: { duration: 1, ease: "power2.out" } });
+  const tl = gsap.timeline({ defaults: { duration: 0.8, ease: "power2.out" }, delay: 1.5 });
 
-  tl.from(".banner .banner-up", { x: -100, opacity: 0 }, "-=0.8");
+  tl.from(".banner .banner-up", { x: 100, opacity: 0 }, "-=0.8");
   tl.from(".banner .banner-down", { x: 100, opacity: 0 }, "-=0.8");
   tl.from(".about .bubble", { y: 100, opacity: 0 }, "-=0.8");
 });
